@@ -1,0 +1,56 @@
+//is-a relation 
+class Animal {
+    eat() {
+        console.log("Animal is eating");
+    }
+}
+class Dog extends Animal {
+    bark() {
+        console.log("Dog is barking");
+    }
+}
+const myDog = new Dog();
+myDog.eat(); // Output: Animal is eating
+myDog.bark(); // Output: Dog is barking
+
+//has-a relation 
+class Address {
+  constructor(city, state) {
+    this.city = city;
+    this.state = state;
+  }
+getAddressInfo() {
+    return `${this.city}, ${this.state}`;
+  }
+}
+class Person {
+  constructor(name, address) {
+    this.name = name;
+    this.address = address;
+  }
+getPersonInfo() {
+    return `Name: ${this.name} Address: ${this.address.getAddressInfo()}`;
+  }
+}
+const personAddress = new Address("Hyderabad", "Telangana");
+const person = new Person("John", personAddress);
+console.log(person.getPersonInfo()); // Output: Name: John Address: Hyderabad, Telangana  
+
+//uses-a relation
+class Animal {
+  eat() {
+    console.log("Animal is eating");
+  }
+}
+class Dog {
+  constructor() {
+    this.animal = new Animal();
+  }
+  feed() {
+    this.animal.eat();
+  }
+}
+const dog = new Dog();
+dog.feed();//Output:Animal is eating
+
+
