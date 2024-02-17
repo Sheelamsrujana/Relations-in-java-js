@@ -1,0 +1,78 @@
+// is-a relation(Inheritance)
+import java.io.*;
+class One{
+  public void eat(){
+    System.out.println("Animal is eating");
+    }
+  }
+class Two extends One{
+  public void bark(){
+    System.out.println("Dog is barking");
+    }
+  }
+public class Main{
+  public static void main(String[] args)
+  {
+    Two two=new Two();
+    two.eat();//Output:Animal is eating
+    two.bark();//Output:Dog is barking
+    }
+  }
+
+//has-a relation(Composition)
+class Address {
+   private String city;
+   private String state;
+
+   public Address( String city, String state) {
+       this.city = city;
+       this.state = state;
+   }
+   public String getAddressInfo() {
+       return  city + ", " + state ;
+   }
+}
+class Person {
+   private String name;
+   private Address address; 
+
+   public Person(String name, Address address) {
+       this.name = name;
+       this.address = address;
+   }
+   public String getPersonInfo() {
+        return "Name: " + name + " Address: " + address.getAddressInfo();
+   }
+}
+public class Main {
+public static void main(String[] args) 
+{
+    Address personAddress = new Address("Hyderabad", "Telangana");
+    Person person = new Person("john", personAddress);
+    System.out.println(person.getPersonInfo());//provides a formatted output of the person’s name and address
+  }
+}
+
+//uses-a relation(Dependancy)
+import java.io.*;
+class Animal{
+  void eat(){
+    System.out.println("Animal is eating");
+    }
+  }
+class Dog{
+  private Animal animal;
+  public Dog(){
+    this.animal=new Animal();
+    }
+  void feed(){
+    animal.eat();
+    }
+  }
+public class Main{
+    public static void main(String[] args){
+      Dog dog=new Dog();
+      dog.feed();
+      }
+  }
+      
